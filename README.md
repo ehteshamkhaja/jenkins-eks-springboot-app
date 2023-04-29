@@ -19,9 +19,23 @@ Once the password is provided, Install the suggested plugins, and Create an user
 
 We also need the below installations.
 
-a. Install awscli
+a. Install awscli  
 
-b. Install docker on Jenkins (it would be useful to build docker images and push to docker registry)
+Steps for reference from AWS Documentation : https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html  or execute the below steps 
+
+=====
+
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+sudo ./aws/install --bin-dir /usr/local/bin --install-dir /usr/local/aws-cli --update
+
+======
+
+
+b. Install docker on Jenkins (it would be useful to build docker images and push to docker registry) .. Reference : https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+
+
 
 During EKS Cluster creation, if kubectl is not installed, Use this link to install kubectl - https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 
