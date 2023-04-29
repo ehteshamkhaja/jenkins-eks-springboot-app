@@ -67,7 +67,7 @@ echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
 
 Run the kubectl get nodes / kubectl get pods commands to verify if it is working now !!!!
 
-
+## CREATE EKS CLUSTER 
 
 2. Create eks cluster with the below command from Jenkins server as we have installed aws cli earlier. 
 
