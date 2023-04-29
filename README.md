@@ -20,6 +20,7 @@ Once the password is provided, Install the suggested plugins, and Create an user
 We also need the below installations.
 
 a. Install awscli
+
 b. Install docker on Jenkins (it would be useful to build docker images and push to docker registry)
 
 During EKS Cluster creation, if kubectl is not installed, Use this link to install kubectl - https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
