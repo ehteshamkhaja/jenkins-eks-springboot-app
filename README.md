@@ -5,7 +5,7 @@ This repo is to deploy springboot application onto EKS using Jenkins
 
 instance_type : t2.medium
 
-OS image (AMI) : Ubuntu 18
+OS image (AMI) : Ubuntu 18    ( its your choice regarding version ) 
 
 Add the script from script inside this repo (jenkins-install.sh) to configure Jenkins Server in user data section:
 
