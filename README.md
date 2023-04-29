@@ -3,7 +3,7 @@ This repo is to deploy springboot application onto EKS using Jenkins
 
 1. First, Configure the Jenkins Server by creating an ec2-instance with the below details:
 
-**instance_type** : t2.medium
+**Instance_type** : t2.medium
 
 **OS image (AMI)** : Ubuntu 18    ( its your choice regarding version ) 
 
