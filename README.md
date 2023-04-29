@@ -55,10 +55,12 @@ Run the kubectl get nodes / kubectl get pods commands to verify if it is working
 
 
 2. Create eks cluster with the below command from Jenkins server as we have installed aws cli earlier. 
+3. 
 ========
 eksctl create cluster --name my-cluster --version 1.22 --region us-west-2 --nodegroup-name linux-group --node-type t2.micro --nodes 2 
 
 ### [Ensure the version is valid one, as newer versions come, older gets deprecated]
+
 =========
 
 Note : If the kubectl is not getting installed during cluster creation, follow the steps for kubectl creation as mentioned in path - https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
