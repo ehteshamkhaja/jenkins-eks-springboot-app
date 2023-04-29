@@ -1,44 +1,53 @@
-
-node {
-  
-  def image
-  def mvnHome = tool 'Maven3'
-
-  
-     stage ('checkout') {
-        checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '9ffd4ee4-3647-4a7d-a357-5e8746463282', url: 'https://bitbucket.org/ananthkannan/myawesomeangularapprepo/']]])       
-        }
-    
-    
-    stage ('Build') {
-            sh 'mvn -f MyAwesomeApp/pom.xml clean install'            
-        }
-        
-    stage ('archive') {
-            archiveArtifacts '**/*.jar'
-        }
-        
-    stage ('Docker Build') {
-         // Build and push image with Jenkins' docker-plugin
-        withDockerServer([uri: "tcp://localhost:4243"]) {
-
-            withDockerRegistry([credentialsId: "fa32f95a-2d3e-4c7b-8f34-11bcc0191d70", url: "https://index.docker.io/v1/"]) {
-            image = docker.build("ananthkannan/mywebapp", "MyAwesomeApp")
-            image.push()
-            
+pipeline {
+   tools {
+        maven 'Maven3'      ### Setup maven in global tools configurations
+    }
+    agent any
+    environment {
+        registry = "account_id.dkr.ecr.us-east-2.amazonaws.com/my-docker-repo"
+    }
+   
+    stages {
+        stage('Cloning Git') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/main']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/akannan1087/springboot-app']]])     
             }
         }
+      stage ('Build') {
+          steps {
+            sh 'mvn clean install'           
+            }
+      }
+    // Building Docker images
+    stage('Building image') {
+      steps{
+        script {
+          sh 'aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin account_id.dkr.ecr.us-west-2.amazonaws.com'
+          sh 'docker tag my-springboot-app:$BUILD_NUMBER account_id.dkr.ecr.us-west-2.amazonaws.com/my-repo'
+          sh 'docker push account_id.dkr.ecr.us-west-2.amazonaws.com/my-repo/'
+
+        }
+      }
     }
-    
-       stage('docker stop container') {
-            sh 'docker ps -f name=myContainer -q | xargs --no-run-if-empty docker container stop'
-            sh 'docker container ls -a -fname=myContainer -q | xargs -r docker container rm'
+   
+    // Uploading Docker images into AWS ECR
+    stage('Pushing to ECR') {
+     steps{  
+         script {
+                sh 'aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin account_id.dkr.ecr.us-west-2.amazonaws.com'
+                sh 'docker push account_id.dkr.ecr.us-west-2.amazonaws.com/my-docker-repo:latest'
+         }
+        }
+      }
 
+       stage('K8S Deploy') {
+        steps{   
+            script {
+                withKubeConfig([credentialsId: 'K8S', serverUrl: '']) {
+                sh ('kubectl apply -f  eks-deploy-k8s.yaml')
+                }
+            }
+        }
        }
-
-    stage ('Docker run') {
-
-        image.run("-p 8085:8085 --rm --name myContainer")
-
     }
 }
