@@ -26,20 +26,24 @@ Once kubectl is installed, verify using simple command - kubectl version
 If you are seeing the below error while listing nodes or pods with kubectl 
 
 ======
+ 
 E0429 06:37:59.903564   10517 memcache.go:265] couldn't get current server API group list: Get "https://59A06120BB5AB9F51B0C41CB03097099.gr7.us-west-2.eks.amazonaws.com/api?timeout=32s": getting credentials: exec: executable aws-iam-authenticator not found
+ 
 ======
 
 As per the error, it indicates the executable aws-iam-authenticator needs to be installed. 
 
 Steps: 
 ===============
+ 
 curl -Lo aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.5.9/aws-iam-authenticator_0.5.9_linux_amd64
 
 chmod +x ./aws-iam-authenticator
 
 mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$PATH:$HOME/bin
 
- echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+ 
 =================
 
 
