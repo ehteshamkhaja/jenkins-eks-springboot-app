@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: my-custom-springboot-app
-        image: accountid.dkr.ecr.us-east-1.amazonaws.com/my-docker-repo
+        image: accountid.dkr.ecr.us-east-1.amazonaws.com/my-docker-repo     # modify the account id and ecr repo name 
         imagePullPolicy: Always
         ports:
         - containerPort: 8085
@@ -35,4 +35,4 @@ spec:
     targetPort: 8085
   type: LoadBalancer
   selector:
-    app: eks-springboot-app-service
+    app: eks-springboot-app-deploy
