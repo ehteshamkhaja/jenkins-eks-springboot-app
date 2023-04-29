@@ -10,7 +10,7 @@ Add the script from script inside this repo (jenkins-install.sh) to configure Je
 
 Once the server is up, Connect to the server and fetch the Jenkins password from /var/lib/jenkins/secrets/initialAdminPassword.
 
-Connect to the Jenkins URL at http://<SERVER-URL>:8080 and provide the password fetched.
+Connect to the Jenkins URL at http://SERVER-URL:8080 and provide the password fetched.
 
 Once the password is provided, Install the suggested plugins, and Create an user for jenkins and save. Relogin with the user again.
 
