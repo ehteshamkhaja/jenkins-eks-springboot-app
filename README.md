@@ -34,7 +34,7 @@ E0429 06:37:59.903564   10517 memcache.go:265] couldn't get current server API g
  
 ======
 
-As per the error, it indicates the executable aws-iam-authenticator needs to be installed. 
+As per the error, it indicates the executable aws-iam-authenticator needs to be installed. follow the below steps to install the aws-iam-authenticator binary.
 
 Steps: 
 ===============
