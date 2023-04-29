@@ -41,7 +41,7 @@ During EKS Cluster creation, if kubectl is not installed, Use this link to insta
 
 Once kubectl is installed, verify using simple command - kubectl version 
 
-If you are seeing the below error while listing nodes or pods with kubectl 
+If you are seeing the below error while listing nodes or pods with kubectl , it is due to executable aws-iam-authenticator not installed.
 
 ======
  
@@ -49,7 +49,7 @@ E0429 06:37:59.903564   10517 memcache.go:265] couldn't get current server API g
  
 ======
 
-As per the error, it indicates the executable aws-iam-authenticator needs to be installed. follow the below steps to install the aws-iam-authenticator binary.
+ follow the below steps to install the aws-iam-authenticator binary.
 
 Steps: 
 ===============
