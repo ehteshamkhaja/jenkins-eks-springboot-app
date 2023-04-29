@@ -66,7 +66,7 @@ eksctl create cluster --name my-cluster --version 1.22 --region us-west-2 --node
 
 Note : If the kubectl is not getting installed during cluster creation, follow the steps for kubectl creation as mentioned in path - https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 
- In releases older than Debian 12 and Ubuntu 22.04, /etc/apt/keyrings does not exist by default. You can create this directory if you need to, making it world-readable but writeable only by admins.  Link --> https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-native-package-management
+ In releases older than Debian 12 and Ubuntu 22.04, **/etc/apt/keyrings** does not exist by default. You can create this directory if you need to, making it world-readable but writeable only by admins.  Link --> https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-using-native-package-management
 
 ==========
 
