@@ -13,7 +13,7 @@ Once the server is up, Connect to the server and fetch the Jenkins password from
 
 Connect to the Jenkins URL at http://SERVER-URL:8080 and provide the password fetched.
 
-Note : If the URL is not loading on the browser, check the inbound rules for the jenkins server instance and allow the port 8080, and try it.
+**Note** : If the URL is not loading on the browser, check the inbound rules for the jenkins server instance and allow the port 8080, and try it.
 
 Once the password is provided, Install the suggested plugins, and Create an user for jenkins and save. Relogin with the user again.
 
