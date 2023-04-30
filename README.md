@@ -1,6 +1,8 @@
 # jenkins-eks-springboot-app
 This repo is to deploy springboot application onto EKS using Jenkins
 
+Please refer to the blog for reference :  https://myselfehtesham.hashnode.dev/deploying-application-using-jenkins-on-eks-elastic-kubernetes-service
+
 1. First, Configure the Jenkins Server by creating an ec2-instance with the below details:
 
 **Instance_type** : t2.medium
