@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: springboot-app
     name: springboot-app
+    labels:
+       app: springboot-app
 spec:
   replicas: 1
   selector:
@@ -15,14 +15,14 @@ spec:
         app: springboot-app
     spec:
       containers:
-      - name: my-springboot-app
+      - name: springboot-app
         image: 210613553230.dkr.ecr.us-west-2.amazonaws.com/my-repo:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8085
           name: http
           protocol: TCP
-# service type loadbalancer       
+# service type loadbalancer
 ---
 apiVersion: v1
 kind: Service
@@ -39,4 +39,4 @@ spec:
     targetPort: 8085
   type: LoadBalancer
   selector:
-    app: springboot-app
+    app: my-springboot-app
