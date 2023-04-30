@@ -17,7 +17,7 @@ Connect to the Jenkins URL at http://SERVER-URL:8080 and provide the password fe
 
 Once the password is provided, Install the suggested plugins, and Create an user for jenkins and save. Relogin with the user again.
 
-We also need the below installations.
+We also need the below installations on Jenkins Server.
 
 a. Install awscli  
 
@@ -68,6 +68,10 @@ echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
 Run the kubectl get nodes / kubectl get pods commands to verify if it is working now !!!!
 
 ## CREATE EKS CLUSTER 
+
+**Pre-requisite** : We need eksctl to be installed for cluster provision using command line tool.
+
+Use this link https://github.com/weaveworks/eksctl/blob/main/README.md#for-unix to install eksctl on Linux Servers ( In our case, we are using Ubuntu server ) 
 
 2. Create eks cluster with the below command from Jenkins server as we have installed aws cli earlier. 
 
