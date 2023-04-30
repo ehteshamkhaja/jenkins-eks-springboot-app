@@ -1,6 +1,6 @@
 pipeline {
    tools {
-        maven 'Maven3'      ### Setup maven in global tools configurations
+        maven 'Maven3'      # Setup maven in global tools configurations
     }
     agent any
     environment {
