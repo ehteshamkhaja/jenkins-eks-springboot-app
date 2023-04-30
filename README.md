@@ -81,7 +81,7 @@ Use this link https://github.com/weaveworks/eksctl/blob/main/README.md#for-unix 
 
 ========
 
-eksctl create cluster --name my-cluster --version 1.22 --region us-west-2 --nodegroup-name linux-group --node-type t2.micro --nodes 2 
+eksctl create cluster --name my-eks-cluster --version 1.22 --region us-west-2 --nodegroup-name linux-group --node-type t3.small --managed  --nodes 2
 
 ### [Ensure the version is valid one, as newer versions come, older gets deprecated]
 
