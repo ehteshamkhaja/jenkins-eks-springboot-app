@@ -22,13 +22,14 @@ pipeline {
     stage('Building image') {
       steps{
         script {
-          sh 'aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin account_id.dkr.ecr.us-west-2.amazonaws.com'
-          sh 'docker tag my-springboot-app:$BUILD_NUMBER account_id.dkr.ecr.us-west-2.amazonaws.com/my-repo'
-          sh 'docker push account_id.dkr.ecr.us-west-2.amazonaws.com/my-repo/'
+          sh 'aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin accountid.dkr.ecr.us-west-2.amazonaws.com'
+          sh 'docker build -t accountid.dkr.ecr.us-west-2.amazonaws.com/my-repo .'
+          
 
         }
       }
     }
+   
    
     // Uploading Docker images into AWS ECR
     stage('Pushing to ECR') {
