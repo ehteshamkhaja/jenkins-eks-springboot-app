@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: springboot-app
-        image: sgandla33/ci-cd-eks-image:v1
+        image: sgandla33/ci-cd-eks-image:v2
         imagePullPolicy: Always
         ports:
         - containerPort: 8085
