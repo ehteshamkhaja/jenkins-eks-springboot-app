@@ -4,7 +4,7 @@ pipeline {
     }
     agent any
     environment {
-        registry = "account_id.dkr.ecr.us-east-2.amazonaws.com/my-docker-repo"
+       // registry = "account_id.dkr.ecr.us-east-2.amazonaws.com/my-docker-repo"
     }
    
     stages {
@@ -19,28 +19,32 @@ pipeline {
             }
       }
     // Building Docker images
-    stage('Building image') {
-      steps{
-        script {
-          sh 'aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin accountid.dkr.ecr.us-west-2.amazonaws.com'
-          sh 'docker build -t accountid.dkr.ecr.us-west-2.amazonaws.com/my-repo .'
-          
 
+    stage('Build Docker'){
+            steps{
+                script{
+                    sh '''
+                    echo 'Buid Docker Image'
+                    docker build -t khajaehtesham/todoapp:${BUILD_NUMBER} .
+                    '''
+                }
+            }
         }
-      }
-    }
    
    
     // Uploading Docker images into AWS ECR
-    stage('Pushing to ECR') {
-     steps{  
-         script {
-                sh 'aws ecr get-login-password --region us-west-2 | docker login --username AWS --password-stdin account_id.dkr.ecr.us-west-2.amazonaws.com'
-                sh 'docker push account_id.dkr.ecr.us-west-2.amazonaws.com/my-docker-repo:latest'
-         }
+   stage('Push the artifacts'){
+           steps{
+                script{
+                    sh '''
+                    docker login -u ehteshamkhaja@gmail.com -p Ehtesham@1251
+                    echo 'Push to Repo'
+                    docker push khajaehtesham/todoapp:${BUILD_NUMBER}
+                    '''
+                }
+            }
         }
-      }
-
+    /*    
        stage('K8S Deploy') {
         steps{   
             script {
@@ -51,4 +55,6 @@ pipeline {
         }
        }
     }
+    */
+}|
 }
