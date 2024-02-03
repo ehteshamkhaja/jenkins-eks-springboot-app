@@ -3,9 +3,7 @@ pipeline {
         maven 'Maven3'      
     }
     agent any
-    environment {
-       // registry = "account_id.dkr.ecr.us-east-2.amazonaws.com/my-docker-repo"
-    }
+    
    
     stages {
         stage('Cloning Git') {
@@ -57,5 +55,5 @@ pipeline {
        */
 
     } 
-    
+
 }
