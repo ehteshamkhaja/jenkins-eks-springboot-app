@@ -58,7 +58,7 @@ pipeline {
                    sh "git config user.email ehteshamkhaja@gmail.com"
                   sh "git config user.name KhajaEhtesham"
                  sh "cat manifests/deployment.yaml"
-                    sh "sed -i 's/ehteshamkhaja/todoapp.*+ehteshamkhaja/todoapp:${BUILD_NUMBER}/g' manifests/deployment.yaml"
+                    sh "sed -i 's+ehteshamkhaja/todoapp.*+ehteshamkhaja/todoapp:${BUILD_NUMBER}+g' manifests/deployment.yaml"
                    sh  "git add -A"
                    sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
                    sh "git push https://github.com/ehteshamkhaja/cicd-manifests-k8s.git HEAD:master"
