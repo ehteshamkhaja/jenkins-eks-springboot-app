@@ -23,7 +23,7 @@ pipeline {
                 script{
                     sh '''
                     echo 'Buid Docker Image'
-                    docker build --platform linux/arm64 -t khajaehtesham/todoapp:${BUILD_NUMBER} .
+                    docker build -t khajaehtesham/todoapp:${BUILD_NUMBER} .
                     '''
                 }
             }
