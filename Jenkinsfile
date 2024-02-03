@@ -42,17 +42,31 @@ pipeline {
                 }
             }
         }
-    /*    
-       stage('K8S Deploy') {
-        steps{   
-            script {
-                withKubeConfig([credentialsId: 'K8S', serverUrl: '']) {
-                sh ('kubectl apply -f  eks-deploy-k8s.yaml')
-                }
+    stage('Checkout K8S manifest SCM'){
+            steps { 
+               git credentialsId: 'git-login', url: 'https://github.com/ehteshamkhaja/cicd-manifests-k8s.git',
+                branch: 'master'
             }
         }
-       }
-       */
+
+        stage('Update K8S manifest & push to Repo'){
+            steps {
+                
+                script{
+             withCredentials([gitUsernamePassword(credentialsId: 'git-login', gitToolName: 'Default')]) {
+                  sh "echo 'testing job'"
+                   sh "git config user.email ehteshamkhaja@gmail.com"
+                  sh "git config user.name KhajaEhtesham"
+                 sh "cat deployment.yaml"
+                    sh "sed -i 's+ehteshamkhaja/todoapp.*+ehteshamkhaja/todoapp:${BUILD_NUMBER}+g' deployment.yaml"
+                   sh  "git add ."
+                   sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
+                   sh "git push https://github.com/ehteshamkhaja/cicd-manifests-k8s.git HEAD:master"
+ 
+                    }
+                } 
+            }
+        }
 
     } 
 
