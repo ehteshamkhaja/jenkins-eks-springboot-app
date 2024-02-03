@@ -3,7 +3,9 @@ pipeline {
         maven 'Maven3'      
     }
     agent any
-    
+     environment {
+        IMAGE_TAG = "${BUILD_NUMBER}"
+    }
    
     stages {
         stage('Cloning Git') {
