@@ -53,7 +53,7 @@ pipeline {
             steps {
                 
                 script{
-              withCredentials([gitUsernamePassword(credentialsId: 'git-login', gitToolName: 'Default')]) {
+              withCredentials([gitUsernamePassword(credentialsId: '565111d7-2eb2-4883-8b77-4cf5cf953b95', gitToolName: 'Default')]) {
                   sh "echo 'testing job'"
                    sh "git config user.email sgandla33@gmail.com"
                   sh "git config user.name Srikanth"
