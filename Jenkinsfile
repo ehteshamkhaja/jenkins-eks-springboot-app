@@ -61,7 +61,7 @@ pipeline {
                     sh "cd manifests && sed -i 's+sgandla33/argocd-k8s.*+sgandla33/argocd-k8s:${BUILD_NUMBER}+g' deployment.yaml"
                    sh  "git add -A"
                    sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
-                   sh "git push https://github.com/ehteshamkhaja/cicd-manifests-k8s.git HEAD:test-k8s"
+                   sh "git push https://github.com/ehteshamkhaja/cicd-manifests-k8s.git HEAD:master"
  
                     }
                 } 
