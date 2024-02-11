@@ -23,7 +23,7 @@ pipeline {
                 script{
                     sh '''
                     echo 'Buid Docker Image'
-                    docker build --platform linux/aarch64 -t khajaehtesham/todoapp:${BUILD_NUMBER} .
+                    docker build  -t sgandla33/argocd-k8s:${BUILD_NUMBER} .
                     '''
                 }
             }
@@ -35,9 +35,9 @@ pipeline {
            steps{
                 script{
                     sh '''
-                    docker login -u ehteshamkhaja@gmail.com -p Ehtesham@1251
+                    docker login -u sgandla33@gmail.com -p Docker@123
                     echo 'Push to Repo'
-                    docker push khajaehtesham/todoapp:${BUILD_NUMBER}
+                    docker push sgandla33/argocd-k8s:${BUILD_NUMBER}
                     '''
                 }
             }
@@ -55,13 +55,13 @@ pipeline {
                 script{
              withCredentials([gitUsernamePassword(credentialsId: 'git-login', gitToolName: 'Default')]) {
                   sh "echo 'testing job'"
-                   sh "git config user.email ehteshamkhaja@gmail.com"
-                  sh "git config user.name KhajaEhtesham"
+                   sh "git config user.email sgandla33@gmail.com"
+                  sh "git config user.name Srikanth"
                   sh "cat manifests/deployment.yaml"
-                    sh "cd manifests && sed -i 's+khajaehtesham/todoapp.*+khajaehtesham/todoapp:${BUILD_NUMBER}+g' deployment.yaml"
+                    sh "cd manifests && sed -i 's+sgandla33/argocd-k8s.*+sgandla33/argocd-k8s:${BUILD_NUMBER}+g' deployment.yaml"
                    sh  "git add -A"
                    sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
-                   sh "git push https://github.com/ehteshamkhaja/cicd-manifests-k8s.git HEAD:master"
+                   sh "git push https://github.com/ehteshamkhaja/cicd-manifests-k8s.git HEAD:test-k8s"
  
                     }
                 } 
