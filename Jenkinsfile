@@ -35,7 +35,7 @@ pipeline {
            steps{
                 script{
                     sh '''
-                    docker login -u ehteshamkhaja@gmail.com -p Ehtesham@1251
+                    docker login -u ehteshamkhaja@gmail.com -p Ehtesdfvam@11234567890
                     echo 'Push to Repo'
                     docker push khajaehtesham/todoapp:${BUILD_NUMBER}
                     '''
