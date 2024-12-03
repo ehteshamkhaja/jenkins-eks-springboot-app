@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: springboot-app
-        image: sgandla33/ci-cd-eks-image:v2
+        image: 94210613553230.dkr.ecr.us-west-2.amazonaws.com/springboot-app-githubactions:v2
         imagePullPolicy: Always
         ports:
         - containerPort: 8085
